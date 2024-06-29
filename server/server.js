@@ -1,10 +1,16 @@
-npm i express
-
-
-
 const express = require('express');
+const router = require('./auth-router');
 
 const app = express();
+
+// app.use(router);
+// or
+app.use("/", router);
+
+
+
+
+
 
 app.get("/", (req, res) => {
     res.status(200).send("Hello World, This is backend server. Nice");
