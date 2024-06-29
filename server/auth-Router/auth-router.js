@@ -1,5 +1,5 @@
 const express = require('express');
-const { Home, Register } = require('../auth-Controller/auth-controller');
+// const { Home, Register } = require('../auth-Controller/auth-controller');
 // or
 const authControler  = require('../auth-Controller/auth-controller');
 
