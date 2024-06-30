@@ -1,5 +1,5 @@
 const User = require("../models/userModel");
-var bcrypt = require('bcryptjs');
+const bcrypt = require('bcryptjs');
 
 const Home = async (req, res) => {
     try
@@ -28,8 +28,11 @@ const Register = async (req, res) => {
             // hash the password
             const saltRound = await bcrypt.genSalt(10);
             const hash_password = await bcrypt.hash(password, saltRound);
-            await User.create({ username, email, phone, password: hash_password });
-            return res.status(201).json({ msg: "User registered successfully." });
+            const newUser = await User.create({ username, email, phone, password: hash_password });
+
+            // Generate JWT token
+            const token = await newUser.generateToken();
+            return res.status(201).json({ msg: "User registered successfully.", token, userId: newUser._id.toString() });
         }
     }
     catch(error)
@@ -38,5 +41,6 @@ const Register = async (req, res) => {
         console.error("Error");
     }
 }
+
 
 module.exports = {Home, Register};
