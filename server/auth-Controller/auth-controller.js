@@ -47,6 +47,7 @@
         {
             const { email, password } = req.body;
             const userExist = await User.findOne({email});
+            console.log(userExist);
 
             if(!userExist)
             {
@@ -58,7 +59,7 @@
             {
                 // Generate JWT token
                 const token = await userExist.generateToken();
-                return res.status(200).json({ msg:"Login successful", token, userId: userExist._id  })
+                return res.status(200).json({ msg:"Login successful", token, userId: userExist._id.toString()  })
             }  
             else 
             {
