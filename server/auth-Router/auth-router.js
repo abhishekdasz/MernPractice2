@@ -24,6 +24,6 @@ const router = express.Router();
 // router.route("/api/auth").get(Home);
 // or
 router.route("/api/auth").get(authControler.Home);
-router.route("/api/auth/register").get(authControler.Register);
+router.route("/api/auth/register").post(authControler.Register);
 
 module.exports = router;
