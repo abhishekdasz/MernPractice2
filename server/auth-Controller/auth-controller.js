@@ -12,8 +12,6 @@
         }
     }
 
-    User
-
     const Register = async (req, res) => {
         try
         {
