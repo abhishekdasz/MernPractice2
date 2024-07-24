@@ -64,7 +64,7 @@
                 return res.status(401).json({ msg: "Invalid credentials !!!" })
             }
 
-        }
+        }                   
         catch(error)
         {
             res.status(400).json("Internal server error while login.");
@@ -73,3 +73,5 @@
     }
 
     module.exports = {Home, Register, Login};
+
+    
